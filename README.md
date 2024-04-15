@@ -19,7 +19,7 @@ notes 4/15/27
 4. open up console and perform git clone https://github.com/pycaret/pycaret-streamlit-google.git`
 5. inside google console terminal `export PROJECT_ID=pycaret-streamlit-gcp`, replace 'pycaret-streamlit-gcp' with whatever you want to call your dockerimage on kubernetes tag
 6. when you cloned your git repo it should have already had a dockerfile in it, `cd` into the repo directory where the dockerfile is located, you will now tell google cloud to build your dockerfile for registry into google registry for kubernetes use with `docker build -t gcr.io/${PROJECT_ID}/insurance-streamlit:v1 .`  
-7. resolve any conflicts with dockerfile, in this case I had to resolve `requirements.txt` file issues and update the file with relevant versions of the python packages, and then type ---> `docker images` to ensure the docker image is build and available.
+7. resolve any conflicts with dockerfile, in this case I had to resolve `requirements.txt` file issues and update the file with relevant versions of the python packages, and then type ---> `docker images` to ensure the docker image is build and available. I also had to resolve dockerfile issue with python version by upgrading it from 3.7 to usage of 3.8.  
 8. type `gcloud auth configure-docker` to authenticate the container-registry in your project. You only have to do this once.
 9. execute the following code to upload the docker image to Google Container Registry: `docker push gcr.io/${PROJECT_ID}/insurance-streamlit:v1`
 10. Set your project ID and Compute Engine zone options for the gcloud tool (make sure you choose the right zone, you can type `gcloud compute zones list` to see a list and pick the most cost effective zone:
