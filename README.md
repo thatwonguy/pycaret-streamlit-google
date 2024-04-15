@@ -27,13 +27,13 @@ notes 4/15/27
 gcloud config set project $PROJECT_ID 
 gcloud config set compute/zone us-west-2a
 ```
-11. Create a cluster by executing the following code: `gcloud container clusters create streamlit-cluster --num-nodes=2`
-12. To deploy and manage applications on a GKE cluster, you must communicate with the Kubernetes cluster management system. Execute the following command to deploy the application:
+11. Create a cluster by executing the following code: `gcloud container clusters create streamlit-cluster --num-nodes=2`  
+12. To deploy and manage applications on a GKE cluster, you must communicate with the Kubernetes cluster management system. Execute the following command to deploy the application: 
 
-`kubectl create deployment insurance-streamlit --image=gcr.io/${PROJECT_ID}/insurance-streamlit:v1`
+`kubectl create deployment insurance-streamlit --image=gcr.io/${PROJECT_ID}/insurance-streamlit:v1`   
 13. By default, the containers you run on GKE are not accessible from the internet because they do not have external IP addresses. Execute the following code to expose the application to the internet:
 
-`kubectl expose deployment insurance-streamlit --type=LoadBalancer --port 80 --target-port 8501`
+`kubectl expose deployment insurance-streamlit --type=LoadBalancer --port 80 --target-port 8501`   
 14. Step 9 — Check Service
 Execute the following code to get the status of the service. EXTERNAL-IP is the web address you can use in browser to view the published app.
 
